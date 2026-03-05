@@ -219,7 +219,7 @@ Users can input loan application details and receive instant predictions.
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/yourusername/loan-prediction-system.git
+git clone https://github.com/olaoluwaoyebola/loan-prediction-system.git
 cd loan-prediction-system
 ```
 
@@ -333,4 +333,4 @@ This project demonstrates practical skills in:
 Data Analyst | Machine Learning Enthusiast
 
 GitHub:
-https://github.com/yourusername
+https://github.com/olaoluwaoyebola
