@@ -4,3 +4,6 @@ data/
 
 #------virtual environments-----
 venv/
+
+#-----pkl--------
+model/
