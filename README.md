@@ -64,7 +64,8 @@ loan-prediction-system/
 │   └── loan_model_training.ipynb
 │
 ├── model/
-│   └── loan_model.pkl
+│   ├── loan_model.pkl
+│   └── loan_columns.pkl
 │
 ├── backend/
 │   ├── main.py
