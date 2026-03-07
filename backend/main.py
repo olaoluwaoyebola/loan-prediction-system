@@ -1,8 +1,11 @@
 # API
 
 from fastapi import FastAPI
-from prediction import predict_loan
-from schemas import LoanRequest
+
+# import from the backend package to ensure module resolution when the app
+# is started from the repository root (e.g. uvicorn backend.main:app).
+from backend.prediction import predict_loan
+from backend.schemas import LoanRequest
 
 app = FastAPI()
 
