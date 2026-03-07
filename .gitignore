@@ -7,3 +7,6 @@ venv/
 
 #-----pkl--------
 model/
+
+#-----python cache files------
+__pycache__/
