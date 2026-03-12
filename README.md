@@ -10,6 +10,12 @@
 
 ---
 
+# Link to dataset
+```
+https://drive.google.com/file/d/1RCaK2-LYD3NLHEzcmk9pOAr8N0c_gnk4/view?usp=sharing
+```
+---
+
 # Project Overview
 
 This project implements a **complete end-to-end machine learning system** for predicting whether a loan application should be **approved or rejected**.
