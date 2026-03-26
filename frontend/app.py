@@ -2,14 +2,19 @@
 # This Streamlit app collects user input for loan application and sends it to the FastAPI backend
 
 # Import necessary libraries
+import os
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (if present)
+load_dotenv()
 
 # Configure page layout to maximize space
 st.set_page_config(layout="wide", page_title="Loan Application", initial_sidebar_state="collapsed")
 
-# API endpoint for prediction
-API_URL = "http://127.0.0.1:8000/predict"
+# API endpoint for prediction — configurable via environment variable
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000/predict")
 
 # Mapping dictionaries for categorical values
 gender_map = {"Male": 0, "Female": 1}
@@ -23,6 +28,18 @@ property_area_map = {"Urban": 0, "Semiurban": 1, "Rural": 2}
 if "step" not in st.session_state:
     st.session_state.step = 1
     st.session_state.form_data = {}
+
+
+def get_step_class(step_number: int) -> str:
+    """Return the CSS class for a step indicator based on the current step."""
+    current = st.session_state.step
+    if step_number == current:
+        return "step-active"
+    elif step_number < current:
+        return "step-completed"
+    else:
+        return "step-pending"
+
 
 # Custom CSS for styling
 st.markdown("""
@@ -85,7 +102,7 @@ st.markdown("""
         box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
     }
     .step-completed {
-        background-color: #74B9FF;
+        background-color: #00B894;
         color: white;
     }
     .step-pending {
@@ -147,16 +164,20 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# Step indicators
-st.markdown("""
+# Dynamic step indicators — highlights based on current step
+step1_cls = get_step_class(1)
+step2_cls = get_step_class(2)
+step3_cls = get_step_class(3)
+
+st.markdown(f"""
     <div class="step-indicator">
-        <div class="step-circle step-active">
+        <div class="step-circle {step1_cls}">
             <span>1️⃣</span><br>Personal Information
         </div>
-        <div class="step-circle step-pending">
+        <div class="step-circle {step2_cls}">
             <span>2️⃣</span><br>Employment Information
         </div>
-        <div class="step-circle step-pending">
+        <div class="step-circle {step3_cls}">
             <span>3️⃣</span><br>Financial Information
         </div>
     </div>
