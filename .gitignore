@@ -1,9 +1,12 @@
 #-----datasets------
 data/
 *.csv
+*.db
+*.sqlite3
 
 #------virtual environments-----
 venv/
+.env
 
 #-----pkl--------
 model/
