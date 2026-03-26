@@ -6,14 +6,41 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red)
 ![Scikit-Learn](https://img.shields.io/badge/ScikitLearn-ML-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Status](https://img.shields.io/badge/Project-Active-success)
 
 ---
 
-# Link to dataset
+## Quick Start
+
+```bash
+git clone https://github.com/olaoluwaoyebola/loan-prediction-system.git
+cd loan-prediction-system
+python -m venv venv && venv\Scripts\activate     # Windows
+pip install -r requirements.txt
+# 1. Run notebook/loan_model_training.ipynb to generate model files
+# 2. Start the API
+uvicorn backend.main:app --reload
+# 3. In a new terminal, launch the frontend
+streamlit run frontend/app.py
 ```
-https://drive.google.com/file/d/1RCaK2-LYD3NLHEzcmk9pOAr8N0c_gnk4/view?usp=sharing
-```
+
+---
+
+## Prerequisites
+
+* **Python 3.10+**
+* **pip** (comes with Python)
+* **Dataset** — download from the link below and place it in `data/loan.csv`
+
+---
+
+## Dataset
+
+📂 [Download the loan dataset from Google Drive](https://drive.google.com/file/d/1RCaK2-LYD3NLHEzcmk9pOAr8N0c_gnk4/view?usp=sharing)
+
+> **Note:** The `data/` and `model/` directories are git-ignored. After cloning you must download the dataset and run the training notebook before the API will work.
+
 ---
 
 # Project Overview
@@ -71,18 +98,21 @@ loan-prediction-system/
 │
 ├── model/
 │   ├── loan_model.pkl
+│   ├── metrics.pkl
 │   └── loan_columns.pkl
 │
 ├── backend/
 │   ├── __init__.py
 │   ├── main.py
 │   ├── schemas.py
-│   └── predictor.py
+│   └── prediction.py
 │
 ├── frontend/
 │   └── app.py
 │
+├── .env.example
 ├── requirements.txt
+├── LICENSE
 ├── README.md
 └── .gitignore
 ```
@@ -121,7 +151,7 @@ The dataset contains information about loan applicants, including:
 The model is trained inside a **Jupyter Notebook**:
 
 ```
-notebooks/loan_model_training.ipynb
+notebook/loan_model_training.ipynb
 ```
 
 ### Training Workflow
@@ -141,6 +171,16 @@ notebooks/loan_model_training.ipynb
 ```
 RandomForestClassifier
 ```
+
+### Model Performance
+
+The trained model achieves the following approximate metrics on the test set:
+
+| Metric   | Score |
+| -------- | ----- |
+| Accuracy | ~78%  |
+
+> Full evaluation details are available in the training notebook. Model metrics are also saved to `model/metrics.pkl`.
 
 The trained model is saved as:
 
@@ -263,6 +303,18 @@ pip install -r requirements.txt
 
 ---
 
+### 4. Configure Environment (Optional)
+
+Copy the example environment file and adjust if needed:
+
+```
+cp .env.example .env
+```
+
+The `.env` file lets you configure the API URL used by the Streamlit frontend.
+
+---
+
 # Running the Project
 
 ### Step 1 — Train the Model
@@ -270,7 +322,7 @@ pip install -r requirements.txt
 Open the notebook:
 
 ```
-notebooks/loan_model_training.ipynb
+notebook/loan_model_training.ipynb
 ```
 
 Run all cells to generate:
@@ -334,11 +386,16 @@ This project demonstrates practical skills in:
 
 ---
 
+# License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
 # Author
 
 **Olaoluwa Isaac**
 
 Data Analyst | Machine Learning Enthusiast
 
-GitHub:
-https://github.com/olaoluwaoyebola
+GitHub: [olaoluwaoyebola](https://github.com/olaoluwaoyebola)
